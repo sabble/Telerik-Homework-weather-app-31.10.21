@@ -1,0 +1,23 @@
+<%- include("./header.ejs") %>
+
+<form action="/weather" method="post">
+  <select name="city">
+    <% cities.map((city)=> { %>
+    <option <%=city.name===currentCity?.name ? "selected" : "" %>> <%= city.name %>
+    </option>
+    <% }); %>
+  </select>
+  <button>submit</button>
+</form>
+
+<% if(currentCity) {%>
+<div>
+  <%= currentCity.name %>
+  <%= currentCity.temperature %> &#176C
+</div>
+<%} %>
+
+<a href="/">Home</a>
+
+
+<%- include("./footer.ejs") %>
